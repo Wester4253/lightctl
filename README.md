@@ -27,15 +27,48 @@ lightctl                # or launch the interactive TUI
 
 ## Features
 
-- **Dual interface** — a rich Textual-based TUI for browsing and clicking around, or a scriptable Typer-based CLI for quick actions and automation.
+- **Dual interface** — a rich Bubbletea/Lipgloss TUI (Go) or Textual TUI (Python) for browsing and clicking around, or a scriptable CLI for quick actions and automation.
+- **Fast startup** — Go binary with instant cold start, no Python interpreter overhead.
+- **Beautiful UI** — Rounded borders, Dracula-inspired colors, smooth progress bars, and visual status indicators.
 - **Home Assistant integration** — talks directly to the Home Assistant REST API, working with existing integrations like `govee2mqtt`.
 - **Profiles** — apply complex, multi-device scenes with one command (`lightctl gaming`). Ships with `night`, `gaming`, `movie`, `work`, and `relax`, and supports fully custom profiles.
 - **Granular control** — brightness, RGB color, and any effect your lights support.
 - **Multi-device** — control several lights at once, with per-device overrides inside a single profile.
 - **PC actions** — optionally trigger `shutdown` or `suspend` after a profile runs (e.g. shut down when `night` mode kicks in).
-- **Themeable TUI** — Nord, Catppuccin, Gruvbox, and more.
+- **Themeable TUI** — Tokyo Night, Nord, Catppuccin, Dracula, Gruvbox, Solarized, and more.
+- **Single binary** — No dependencies, just copy and run (Go version).
 
 ## Installation
+
+### Quick Install (Go Version - Recommended)
+
+The fastest way to get lightctl up and running with the modern Go/Bubbletea TUI:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Wester4253/lightctl/main/install.sh | bash
+```
+
+Or with wget:
+```bash
+wget -qO- https://raw.githubusercontent.com/Wester4253/lightctl/main/install.sh | bash
+```
+
+This will:
+- Check for Go 1.22+ (required)
+- Clone the repository
+- Build the optimized binary
+- Install to `/usr/local/bin/lightctl`
+
+**Manual Installation (Go):**
+
+```bash
+git clone https://github.com/wester4253/lightctl.git
+cd lightctl/go-lightctl
+go build -o lightctl .
+sudo cp lightctl /usr/local/bin/
+```
+
+### Python Version (Legacy)
 
 **Requirements:** Python 3.10+
 
