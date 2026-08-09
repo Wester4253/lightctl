@@ -138,11 +138,18 @@ log_success "Installed to $INSTALL_DIR/$BINARY_NAME"
 if [ -e "$LEGACY_PATH" ] && [ "$INSTALL_DIR" != "$(dirname "$LEGACY_PATH")" ]; then
     log_warning "Removing older lightctl installation at $LEGACY_PATH"
     if [ -w "$(dirname "$LEGACY_PATH")" ]; then
-        rm -f "$LEGACY_PATH"
+        if rm -f "$LEGACY_PATH"; then
+            log_success "Removed older installation"
+        else
+            log_warning "Could not remove $LEGACY_PATH; run 'sudo rm $LEGACY_PATH' to avoid invoking the older version."
+        fi
     else
-        sudo rm -f "$LEGACY_PATH"
+        if sudo rm -f "$LEGACY_PATH"; then
+            log_success "Removed older installation"
+        else
+            log_warning "Could not remove $LEGACY_PATH; run 'sudo rm $LEGACY_PATH' to avoid invoking the older version."
+        fi
     fi
-    log_success "Removed older installation"
 fi
 
 # Clean up
