@@ -177,7 +177,7 @@ The `-ldflags="-s -w"` flag strips debug info for smaller binary size.
 ## Uninstall
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Wester4253/lightctl/go/uninstall.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Wester4253/lightctl/refs/heads/main/uninstall.sh | bash
 ```
 
 Or manually:
