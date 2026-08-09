@@ -135,7 +135,7 @@ log_success "Installed to $INSTALL_DIR/$BINARY_NAME"
 
 # Remove the Python executable left by older installations. This matters on
 # systems where /usr/bin appears before /usr/local/bin in PATH.
-if [ -e "$LEGACY_PATH" ] && [ "$LEGACY_PATH" != "$INSTALL_DIR/$BINARY_NAME" ]; then
+if [ -e "$LEGACY_PATH" ] && [ "$INSTALL_DIR" != "$(dirname "$LEGACY_PATH")" ]; then
     log_warning "Removing older lightctl installation at $LEGACY_PATH"
     if [ -w "$(dirname "$LEGACY_PATH")" ]; then
         rm -f "$LEGACY_PATH"
