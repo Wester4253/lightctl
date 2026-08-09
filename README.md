@@ -1,8 +1,10 @@
-# lightctl (Go/Bubbletea)
+# lightctl
 
 Modern terminal UI for controlling Govee smart lights through Home Assistant.
 
-**This is the Go/Bubbletea version.** For the Python version, see the `python` branch.
+Built with Go and Bubbletea for fast performance and beautiful terminal UI.
+
+> **Note:** The original Python version is archived in the `python` branch.
 
 ## Why Go?
 
@@ -14,7 +16,7 @@ Modern terminal UI for controlling Govee smart lights through Home Assistant.
 ## Quick Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Wester4253/lightctl/go/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Wester4253/lightctl/main/install.sh | bash
 ```
 
 **Requirements:** Go 1.22+
@@ -22,13 +24,11 @@ curl -fsSL https://raw.githubusercontent.com/Wester4253/lightctl/go/install.sh |
 **Manual Installation:**
 
 ```bash
-git clone -b go https://github.com/wester4253/lightctl.git
+git clone https://github.com/wester4253/lightctl.git
 cd lightctl
 go build -ldflags="-s -w" -o lightctl .
 sudo cp lightctl /usr/local/bin/
 ```
-
-**For Python version:** See the `python` branch
 
 ---
 

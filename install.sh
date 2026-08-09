@@ -19,7 +19,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 REPO="Wester4253/lightctl"
-BRANCH="go"
+BRANCH="main"
 GITHUB_URL="https://github.com/${REPO}"
 INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="lightctl"
@@ -92,13 +92,8 @@ log_success "Repository cloned"
 log_info "Building lightctl..."
 cd "$BUILD_DIR"
 
-# Check if go-lightctl subdirectory exists
-if [ -d "go-lightctl" ]; then
-    cd "go-lightctl"
-elif [ -f "go.mod" ]; then
-    # Already in the right directory
-    :
-else
+# Main branch has Go files at root (no subdirectory needed)
+if [ ! -f "go.mod" ]; then
     log_error "Could not find Go project in repository"
     rm -rf "$BUILD_DIR"
     exit 1
