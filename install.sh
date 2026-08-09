@@ -24,6 +24,7 @@ GITHUB_URL="https://github.com/${REPO}"
 INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="lightctl"
 BUILD_DIR="/tmp/lightctl-install-$$"
+LEGACY_PATH="/usr/bin/$BINARY_NAME"
 
 # Functions
 log_info() {
@@ -132,6 +133,19 @@ fi
 
 log_success "Installed to $INSTALL_DIR/$BINARY_NAME"
 
+# Remove the Python executable left by older installations. This matters on
+# systems where /usr/bin appears before /usr/local/bin in PATH.
+if [ -e "$LEGACY_PATH" ] && [ "$INSTALL_DIR" != "$(dirname "$LEGACY_PATH")" ]; then
+    log_warning "Removing older lightctl installation at $LEGACY_PATH"
+    if rm -f "$LEGACY_PATH" 2>/dev/null; then
+        log_success "Removed older installation"
+    elif [ -e "$LEGACY_PATH" ] && sudo rm -f "$LEGACY_PATH"; then
+        log_success "Removed older installation"
+    else
+        log_warning "Could not remove $LEGACY_PATH; run 'sudo rm $LEGACY_PATH' to ensure the new Go binary is used instead."
+    fi
+fi
+
 # Clean up
 rm -rf "$BUILD_DIR"
 log_success "Cleanup complete"
@@ -142,6 +156,7 @@ echo "║           Installation Complete! 🎉           ║"
 echo "╚═══════════════════════════════════════════════╝"
 echo ""
 log_info "lightctl has been installed to $INSTALL_DIR/$BINARY_NAME"
+log_info "If your shell still finds an older version, run 'hash -r' and start a new shell."
 echo ""
 echo "Next steps:"
 echo "  1. Generate a Home Assistant long-lived access token"
