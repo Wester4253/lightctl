@@ -142,7 +142,7 @@ if [ -e "$LEGACY_PATH" ] && [ "$INSTALL_DIR" != "$(dirname "$LEGACY_PATH")" ]; t
     elif [ -e "$LEGACY_PATH" ] && sudo rm -f "$LEGACY_PATH"; then
         log_success "Removed older installation"
     else
-        log_warning "Could not remove $LEGACY_PATH; run 'sudo rm $LEGACY_PATH' to avoid invoking the older version."
+        log_warning "Could not remove $LEGACY_PATH; run 'sudo rm $LEGACY_PATH' to ensure the new Go binary is used instead."
     fi
 fi
 
