@@ -6,7 +6,7 @@ set -e
 
 echo "╔═══════════════════════════════════════════════╗"
 echo "║         lightctl Installation Script          ║"
-echo "║   Home Assistant Light Control for Terminal  ║"
+echo "║   Home Assistant Light Control for Terminal   ║"
 echo "╚═══════════════════════════════════════════════╝"
 echo ""
 
