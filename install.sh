@@ -19,6 +19,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 REPO="Wester4253/lightctl"
+BRANCH="go"
 GITHUB_URL="https://github.com/${REPO}"
 INSTALL_DIR="/usr/local/bin"
 BINARY_NAME="lightctl"
@@ -76,9 +77,9 @@ fi
 log_success "Go $GO_VERSION detected"
 
 # Clone repository
-log_info "Cloning lightctl from GitHub..."
+log_info "Cloning lightctl from GitHub (branch: $BRANCH)..."
 rm -rf "$BUILD_DIR"
-git clone --depth 1 "$GITHUB_URL" "$BUILD_DIR" > /dev/null 2>&1
+git clone --depth 1 --branch "$BRANCH" "$GITHUB_URL" "$BUILD_DIR" > /dev/null 2>&1
 
 if [ $? -ne 0 ]; then
     log_error "Failed to clone repository from $GITHUB_URL"
